@@ -14,10 +14,7 @@ def amazon():
         print i['title']
     return r['results']
 
-################### Theatre Showtimes ######
-SOTD: Sell Out - Reel Big Fish
-
-strsep - <string.h>###############
+################### Theatre Showtimes #####################
 
 def showtimes(zipcode):
     url = '''
