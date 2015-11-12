@@ -58,4 +58,4 @@ def zipcode(state,city):
     r = json.loads(result)
     if r == {}:
         return "error"
-    return r['places']
+    return r['places'] #{'city name': 'whitestone', 'post code': '11357'}
