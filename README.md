@@ -1,5 +1,15 @@
 # No Netflix No Chill
-Software Development term1 project 2
+Software Development term1 project 2<br>
+
+### Contributors
+Sandy Fang, Katherine Gershfeld, Jacob Hoffman, Dong Shin
+
+### Project Description
+
+### APIs Used
+Guidebox:
+Gracenote:
+Weather:
 
 ### Project Layout:
 
