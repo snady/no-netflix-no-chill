@@ -1,24 +1,24 @@
-# no-netflix-no-chill
+# No Netflix No Chill
 Software Development term1 project 2
 
-project layout:
+### Project Layout:
 
 zip code search to weather api:
-if cold {
-  'netflix' n chill (random movie from top)
-}else{
-  movie theater release (nytimes api)
+if cold {<br>
+  'netflix' n chill (random movie from top)<br>
+}else{<br>
+  movie theater release (nytimes api)<br>
 }
 
-ADDITIONAL FEATURES
+### ADDITIONAL FEATURES
 sort by genre
+narrow down choices
 embed trailers
 
-tasks
+###tasks
 tasks
 takasssskfa
 
-MAKE SURE ALL THE APIS WORK
-weather: return weather forecast for the week TEMPERATURES ONLY
-new york times: SCRAPE MOVIE TITLES TITLES TITITITITITITLES
-guidebox: idk
+MAKE SURE ALL THE APIS WORK<br>
+do everything<br>
+
