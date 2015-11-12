@@ -6,8 +6,8 @@ Software Development term1 project 2
 zip code search to weather api:
 if cold {<br>
   'netflix' n chill (random movie from top)<br>
-}else{<br>
-  movie theater release (nytimes api)<br>
+} else {<br>
+  movie theater release (gracenote api)<br>
 }
 
 ### ADDITIONAL FEATURES
@@ -21,4 +21,4 @@ takasssskfa
 
 MAKE SURE ALL THE APIS WORK<br>
 do everything<br>
-
+website design<br>
