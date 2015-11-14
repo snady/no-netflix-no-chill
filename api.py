@@ -20,6 +20,9 @@ def showtimes(zipcode):
     url = '''
     http://data.tmsapi.com/v1.1/movies/showings?startDate=%s&zip=%s&api_key=wzkewgxzuwv4fzh88f8cazfp
     '''
+    url = '''
+    http://data.tmsapi.com/v1.1/movies/showings?startDate=%s&zip=%s&api_key=e4gyb2hr7uxmxpq7c8csddd7
+    '''
     d = datetime.datetime.now()
     date = d.strftime('%Y-%m-%d')
     url = url%(date, zipcode)
@@ -27,13 +30,33 @@ def showtimes(zipcode):
     request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
+    '''
     for i in r:
         print i['title']
         for t in i['showtimes']:
             print t['theatre']['name'], 
             print t['dateTime'].split('T') 
         print '\n'
+    '''
+    for i in r:
+        theatres = []
+        n = 0;
+        temp = ""
+        for t in i['showtimes']:
+            if t['theatre']['name'] == temp:
+                theatres[-1]['times'].append(t['dateTime'].split('T')[1])
+            else:
+                theatres.append({})
+                temp = t['theatre']['name']
+                theatres[-1]['name'] = temp
+                theatres[-1]['times'] = [t['dateTime'].split('T')[1]]
+            #print theatres
+        i['theatres'] = theatres
+        print i['theatres']
+            
     return r
+
+#showtimes(11229)
 
 ################### OpenWeather #####################
 

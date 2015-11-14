@@ -4,10 +4,12 @@
 <h2>{{movie['title']}}</h2>
 <br>
 <p>Showtimes:</p>
-{% for t in movie['showtimes'] %}
-	{% set date=t['dateTime'].split('T')[0] %}
-	{% set time=t['dateTime'].split('T')[1] %}
-	<p>{{t['theatre']['name']}}, {{date}}, {{time}}</p>
+{% for theatre in movie['theatres'] %}
+<p>{{theatre['name']}}</p><p>
+{% for time in theatre['times'] %}
+{{time}}
+{% endfor %}
+</p>
 {% endfor %}
 <br>
 {% endfor %}

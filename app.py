@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 ######################## globals ##############################
 
-thresh = 15
+thresh = 0
 temp = -273 #temperature in celcius. If abs 0, then err
 zipc = ""
 
