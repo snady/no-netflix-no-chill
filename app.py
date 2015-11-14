@@ -31,7 +31,7 @@ def chill():
 @app.route("/nochill")
 def nochill():
         print zipc
-        movies = api.showtimes(int(zipc))
+        movies = api.showtimes(zipc)
         return render_template("nochill.html", movies=movies, temp=temp)
 
 if __name__ == "__main__":
