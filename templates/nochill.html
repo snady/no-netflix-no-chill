@@ -1,0 +1,13 @@
+<h1>Is it hot outside or is it just me? Look like it's {{temp}} degrees outside, wow! Here are some movies airing nearby:</h1>
+<br><br>
+{% for movie in movies %}
+<h2>{{movie['title']}}</h2>
+<br>
+<p>Showtimes:</p>
+{% for t in movie['showtimes'] %}
+	{% set date=t['dateTime'].split('T')[0] %}
+	{% set time=t['dateTime'].split('T')[1] %}
+	<p>{{t['theatre']['name']}}, {{date}}, {{time}}</p>
+{% endfor %}
+<br>
+{% endfor %}

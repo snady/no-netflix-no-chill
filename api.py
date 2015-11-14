@@ -21,7 +21,7 @@ def showtimes(zipcode):
     http://data.tmsapi.com/v1.1/movies/showings?startDate=%s&zip=%s&api_key=wzkewgxzuwv4fzh88f8cazfp
     '''
     d = datetime.datetime.now()
-    date = d.strftime('%Y-%d-%m')
+    date = d.strftime('%Y-%m-%d')
     url = url%(date, zipcode)
     #print url
     request = urllib2.urlopen(url)

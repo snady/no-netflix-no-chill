@@ -1,0 +1,6 @@
+<h1>It's {{temp}} degrees outside! How about some amazon prime and chill?</h1>
+<br><br>
+{% for movie in movies %}
+<h2>{{movie['title']}}</h2> <img src="{{movie['poster_240x342']}}" alt="oops">
+<br>
+{% endfor %}
