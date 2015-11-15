@@ -14,6 +14,16 @@ def amazon():
         print i['title']
     return r['results']
 
+def amazonGenre(id):
+    url = '''
+    https://api-public.guidebox.com/v1.43/US/rKAvVCDsUeEZaNcv4AIfOvmw9SBdODY2/movie/%s
+    '''
+    url = url%(str(id))
+    request = urllib2.urlopen(url)
+    result = request.read()
+    r = json.loads(result)
+    return r['genres']
+
 ################### Theatre Showtimes #####################
 
 def showtimes(zipcode):

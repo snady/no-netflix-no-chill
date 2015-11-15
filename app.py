@@ -34,6 +34,34 @@ def nochill():
         movies = api.showtimes(zipc)
         return render_template("nochill.html", movies=movies, temp=temp)
 
+def filterGenre(json, genre):
+        newjson = []
+        for r in json:
+                if 'id' not in r: #distinguishes between showtimes vs guidebox json formats
+                        if 'genres' in r:
+                                for t in r['genres']: #showtimes
+                                        if t == genre:
+                                                newjson.append(r)
+                else:
+                        print r['id']
+                        for t in api.amazonGenre(r['id']): #guidebox
+                                if t['title'] == genre:
+                                        newjson.append(r)
+        return newjson
+
+def filterRating(json, rate): #rate = "R", "PG-13", so on
+        newjson = []
+        for r in json:
+                if 'id' in r:
+                        if r['rating'] == rate: #guidebox
+                                newjson.append(r)
+                else:
+                        if 'ratings' in r:
+                                for t in r['ratings']: #showtimes
+                                        if t['code'] == rate:
+                                                newjson.append(r)
+        return newjson
+
 if __name__ == "__main__":
         app.secret_key = "hello"
         app.debug = True
