@@ -30,10 +30,8 @@
     </div>
     <div id="leftA">
       <div id="arch"> <span></span>
-        <h2>It's {{temp}} degrees outside! How about some amazon prime and chill?<br><br></h2>
-<br><br>
 {% for movie in movies %}
-<h2>{{movie['title']}}</h2><br> <img src="{{movie['poster_240x342']}}" alt="oops">
+ <img src="{{movie['poster_240x342']}}" alt="oops">
 <br>
 {% endfor %}
                 <p></p>
@@ -48,7 +46,7 @@
       <span></span> </div>
     <div id="rightPan1">
       <h2><span>Welcome to</span> No Netflix No Chill</h2>
-      <p>Netflix and Chill is a phenomenon that has been sweeping the world. People get together, watch netflix, and reproduce. Unfortunately, not all of us have Netflix, So this site offers alternate methods to accomplish the same things.</p>
+      <p>Netflix and Chill is a phenomenon that has been sweeping the world. People get together, watch netflix, and reproduce. Unfortunately, not all of us have Netflix, So this site offers alternate methods to accomplish the same things.<br><br>It's {{temp}} degrees outside! How about some amazon prime and chill?</p>
       <a class="more" href="#"></a> </div>
   </div>
   <br class="blank" />
