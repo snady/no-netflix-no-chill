@@ -11,16 +11,13 @@
     <div id="member">
       <p></p>
       <form method="post">
+		<h2>Is it hot outside or is it just me? Look like it's {{temp}} degrees outside, wow! Here are some movies airing nearby:</h2>
         </form>
       <p class="buttom"></p>
     </div>
     <h2 title="No Netflix No Chill">No Netflix No Chill</h2>
     <div id="leftA">
-      <div id="arch">
-       <span></span>
-                <p></p>
-      </div>
-    </div>
+      
     <br class="blank" />
   </div>
   <div id="rightPan">
@@ -29,14 +26,14 @@
       </form>
       <span></span> </div>
     <div id="rightPan1">
-      <p>Is it hot outside or is it just me? Look like it's {{temp}} degrees outside, wow! Here are some movies airing nearby:</p>
+      <p><h2> Theatre Movies</h2></p>
 <br><br>
 {% for movie in movies %}
 <h2>{{movie['title']}}</h2>
 <br>
 <p>Showtimes:</p>
 {% for theatre in movie['theatres'] %}
-<p>{{theatre['name']}}</p><p>
+<p><b>{{theatre['name']}}</b></p><p>
 {% for time in theatre['times'] %}
 {{time}}
 {% endfor %}
