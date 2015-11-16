@@ -25,8 +25,6 @@ def amazon():
         request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
-    for i in r['results']:
-        print i['title']
     return r['results']
 
 def amazonGenre(id):
@@ -130,7 +128,6 @@ def showtimes(zipcode):
                 theatres[-1]['name'] = temp
                 theatres[-1]['times'] = [t['dateTime'].split('T')[1]]
         i['theatres'] = theatres
-        print i['theatres']
     return r
 
 #showtimes(11229)
@@ -165,16 +162,15 @@ def filterGenre(json, genre):
         '''
         newjson = []
         for r in json:
-                if 'id' not in r: #distinguishes between showtimes vs guidebox json formats
-                        if 'genres' in r:
-                                for t in r['genres']: #showtimes
-                                        if t == genre:
-                                                newjson.append(r)
+            if 'id' not in r: #distinguishes between showtimes vs guidebox
+                if 'genres' in r:
+                    for t in r['genres']: #showtimes
+                        if t == genre:
+                            newjson.append(r)
                 else:
-                        print r['id']
-                        for t in amazonGenre(r['id']): #guidebox
-                                if t['title'] == genre:
-                                        newjson.append(r)
+                    for t in amazonGenre(r['id']): #guidebox
+                        if t['title'] == genre:
+                            newjson.append(r)
         return newjson
 
 def filterRating(json, rate): #rate = "R", "PG-13", so on
@@ -187,12 +183,12 @@ def filterRating(json, rate): #rate = "R", "PG-13", so on
         '''
         newjson = []
         for r in json:
-                if 'id' in r:
-                        if r['rating'] == rate: #guidebox
-                                newjson.append(r)
-                else:
-                        if 'ratings' in r:
-                                for t in r['ratings']: #showtimes
-                                        if t['code'] == rate:
-                                                newjson.append(r)
+            if 'id' in r:
+                if r['rating'] == rate: #guidebox
+                    newjson.append(r)
+            else:
+                if 'ratings' in r:
+                    for t in r['ratings']: #showtimes
+                        if t['code'] == rate:
+                            newjson.append(r)
         return newjson

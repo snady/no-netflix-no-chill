@@ -64,7 +64,6 @@ def nochill():
 
         return template html nochill
         '''
-        print zipc
         movies = api.showtimes(zipc)
         if genre != 'no':
                 movies = api.filterGenre(movies, genre)
