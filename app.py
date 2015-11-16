@@ -31,12 +31,15 @@ def index():
         
 @app.route("/chill")
 def chill():
+        links = []
         movies = api.amazon()
         if genre != 'no':
                 movies = filterGenre(movies, genre)
         if rating != 'no':
                 movies = filterRating(movies, rating)
-        return render_template("chill.html", movies=movies, temp=temp)
+        for movie in movies:
+                links.append(api.amazonPurchase(movie['id']))
+        return render_template("chill.html", movies=movies, temp=temp, links=links)
 
 @app.route("/nochill")
 def nochill():
