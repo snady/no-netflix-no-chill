@@ -35,7 +35,7 @@ ul{
 	margin:0;
 	}
 #member form h2{
-	background:url(images/member_icon.gif) no-repeat 0 4px; font:normal 18px/16px Arial, Helvetica, sans-serif; padding:0 0 0 19px; width:150px; display:block; height:22px; margin:0; text-indent:0px;
+	background:url(images/member_icon.gif) no-repeat 0 4px; font:normal 18px/16px Arial, Helvetica, sans-serif; padding:50px 0 0 19px; width:150px; display:block; height:22px; margin:0; text-indent:0px;
 	}
 #member form label{
 	font-size:10px; line-height:14px; text-transform:uppercase; display:block; 
@@ -140,7 +140,7 @@ ul{
 	}
 /*---------------------------------right side---------------*/
 #rightPan{
-	width:250px; float:center;  margin:39px 0 0 0; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:0;
+	width:250px; float:center;  margin:39px 0 0 40px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:0;
 	}
 #rightsude{
 	width:250px; background:url(images/leftform_up.gif) no-repeat   margin:0 0 0 0; 
@@ -177,7 +177,7 @@ ul{
 	cursor:pointer; border:none; font-size:0; 
 	}/*---------------------right side navigation---------------**/
 #rightPan1{
-	width:720px;  margin:2px 0 15px 0; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:0;
+	width:720px;  margin:2px 0 15px 20px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:0;
 	height:200px;  position:absolute; left: 1600px top:139px;
 	}
 #rightPan1 table{width: 720px}
@@ -206,7 +206,7 @@ ul{
 	}
 #rightPan1 h2{
 	font:normal 24px/22px Arial, Helvetica, sans-serif; color:#765914; display:block; width:500px; text-indent:0;
-	height:52px; margin:0 0 22px 0; 
+	height:52px; margin:0 0 0 0; 
 	}
 #rightPan1 h2 span{
 	color:#281D00;

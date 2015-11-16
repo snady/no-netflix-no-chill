@@ -26,12 +26,8 @@
       </form>
       <span></span> </div>
     <div id="rightPan1">
-      <p><h2> Theatre Movies</h2></p>
-<br><br>
 {% for movie in movies %}
 <h2>{{movie['title']}}</h2>
-<br>
-<p>Showtimes:</p>
 {% for theatre in movie['theatres'] %}
 <p><b>{{theatre['name']}}</b></p><p>
 {% for time in theatre['times'] %}
@@ -39,7 +35,7 @@
 {% endfor %}
 </p>
 {% endfor %}
-<br>
+<br><br>
 {% endfor %}
 
       <a class="more" href="#"></a> </div>
