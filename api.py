@@ -55,9 +55,11 @@ def amazonGenre(id):
 
 def amazonPurchase(id):
     '''
-    Returns a link of movie if available in amazon prime, otherwise returns 'nop'
+    Returns a link of movie if available in amazon prime, otherwise returns amazon prime homepage
 
-    return link of movie or 'nop'
+    :param id: id of a single movie
+
+    return link of movie or amazon prime homepage
     '''
     url = '''
     https://api-public.guidebox.com/v1.43/US/rKAvVCDsUeEZaNcv4AIfOvmw9SBdODY2/movie/%s
@@ -76,7 +78,7 @@ def amazonPurchase(id):
     for source in r['subscription_web_sources']:
         if source['source'] == 'amazon_prime':
             return source['link']
-    return "nop"
+    return "https://www.amazon.com/Prime-Instant-Video/b?_encoding=UTF8&node=2676882011"
 
 ####################################### Theatre Showtimes ##########################################
 
