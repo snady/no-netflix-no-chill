@@ -15,7 +15,14 @@ def amazon():
     '''
     random.seed()
     url = url%(random.randrange(60))
-    request = urllib2.urlopen(url)
+    try:
+        request = urllib2.urlopen(url)
+    except urllib2.HTTPError:
+        url = '''
+        https://api-public.guidebox.com/v1.43/US/rK4Ib650FXTN9DstFsEAortyzVwapVVZ/movies/all/%s/15/amazon_prime/all
+        '''
+        url = url%(random.randrange(60))
+        request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
     for i in r['results']:
@@ -34,7 +41,14 @@ def amazonGenre(id):
     https://api-public.guidebox.com/v1.43/US/rKAvVCDsUeEZaNcv4AIfOvmw9SBdODY2/movie/%s
     '''
     url = url%(str(id))
-    request = urllib2.urlopen(url)
+    try:
+        request = urllib2.urlopen(url)
+    except urllib2.HTTPError:
+        url = '''
+        https://api-public.guidebox.com/v1.43/US/rK4Ib650FXTN9DstFsEAortyzVwapVVZ/movies/all/%s/15/amazon_prime/all
+        '''
+        url = url%(str(id))
+        request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
     return r['genres']
@@ -49,7 +63,14 @@ def amazonPurchase(id):
     https://api-public.guidebox.com/v1.43/US/rKAvVCDsUeEZaNcv4AIfOvmw9SBdODY2/movie/%s
     '''
     url = url%(str(id))
-    request = urllib2.urlopen(url)
+    try:
+        request = urllib2.urlopen(url)
+    except urllib2.HTTPError:
+        url = '''
+        https://api-public.guidebox.com/v1.43/US/rK4Ib650FXTN9DstFsEAortyzVwapVVZ/movies/all/%s/15/amazon_prime/all
+        '''
+        url = url%(str(id))
+        request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
     for source in r['subscription_web_sources']:
@@ -147,7 +168,7 @@ def filterGenre(json, genre):
                                                 newjson.append(r)
                 else:
                         print r['id']
-                        for t in api.amazonGenre(r['id']): #guidebox
+                        for t in amazonGenre(r['id']): #guidebox
                                 if t['title'] == genre:
                                         newjson.append(r)
         return newjson
