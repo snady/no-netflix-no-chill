@@ -69,12 +69,14 @@ def amazonPurchase(id):
         request = urllib2.urlopen(url)
     except urllib2.HTTPError:
         url = '''
-        https://api-public.guidebox.com/v1.43/US/rK4Ib650FXTN9DstFsEAortyzVwapVVZ/movies/all/%s/15/amazon_prime/all
+        https://api-public.guidebox.com/v1.43/US/rK4Ib650FXTN9DstFsEAortyzVwapVVZ/movies/%s
         '''
         url = url%(str(id))
         request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
+    if 'subscription_web_sources' not in r:
+        return "https://www.amazon.com/Prime-Instant-Video/b?_encoding=UTF8&node=2676882011"
     for source in r['subscription_web_sources']:
         if source['source'] == 'amazon_prime':
             return source['link']

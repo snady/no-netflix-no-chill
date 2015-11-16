@@ -34,15 +34,14 @@
 </div>
 <br><br>.<br>
 <table>
-<tr><br></tr><tr>
-{%set counter = 0 %}
-{% for movie in movies %}
-<td><img src="{{movie['poster_240x342']}}" alt="oops"></td>
-{% set counter = counter + 1 %}
-{% if counter == 3 %}
-	</tr><tr>
+<tr><br>
 {% set counter = 0 %}
-{%endif%}
+{% for movie in movies %}
+{% if counter % 3 == 0 %}
+</tr><tr>
+{% endif %}
+<td><a href={{links[counter]}}><img src="{{movie['poster_240x342']}}" alt="oops"></img></a></td>
+{% set counter = counter + 1 %}
 {% endfor %}</tr></table>
 
 </body>
