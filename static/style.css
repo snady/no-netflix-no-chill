@@ -18,7 +18,7 @@ ul{
 	}
 /*---------------------------left side--------------*/
 #leftPan{
-	width:542px; background:url(images/header_pic.jpg) no-repeat; padding:25px 0 0 0; font-size:0; float:left;
+	width:733px; background:url(images/header_pic.jpg) no-repeat; padding:25px 0 0 0; font-size:0; float:left;
 	}
 /*----------------member login---------*/
 #member{
@@ -101,7 +101,7 @@ ul{
 	}
 /*----------------archives-------------*/
 #leftA{
-	width:166px; margin:29px 0 0 0px; padding:0; float:left; background:url(images/archivTable_bg.gif) repeat-y 0 0;
+	width:166px; margin:42px 0 0 0px; padding:0; float:left; background:url(images/archivTable_bg.gif) repeat-y 0 0;
 	}
 #arch{	
 	width:154px; background:url(images/archive_bg.gif) repeat-y 0 0; margin:0px 0 0px 0px; float:left; display:block; font-size:0;
@@ -114,11 +114,11 @@ ul{
 	background:url(images/archive_buttom.gif) no-repeat left bottom; width:154px; height:13px; display:block; font-size:0;
 	}
 #arch h2{
-	color:#704F01; font-size:16px; line-height:16px; display:block; margin:0 0 0 0;
-	padding:0; background-image:none; height:26px; width:154px; text-indent:0px; font-family:Arial, Helvetica, sans-serif;
+	color:#765914; font-size:16px; line-height:16px; display:block; margin:0 0 0 0;
+	padding:0; background-image:none; height:26px; width:154px; text-indent:0px; font:24px/29px Arial,Helvetica,sans-serif;
 	}
 #arch h3{
-	 color:#2B2517; text-transform:uppercase; margin: 0 0 5px 32px; width:83px; display:block;
+	 color:#2B2517; text-transform:uppercase; margin: 10px 0 5px 32px; width:83px; display:block;
 	 font-size:10px; line-height:17px; font-weight:bold; padding:0; 
 	}
 #arch ul{
