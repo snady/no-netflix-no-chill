@@ -28,7 +28,9 @@ def index():
                 rating = request.form['rating']
                 global temp
                 temp = api.weather(zipc)
-                if temp >= thresh:
+                if temp == -1000:
+                        return render_template("dummy.html")
+                elif temp >= thresh:
                         return redirect("/nochill")
                 else:
                         return redirect("/chill")

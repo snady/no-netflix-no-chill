@@ -123,7 +123,10 @@ def weather(zipcode):
     request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
-    return r['main']['temp']
+    if r['cod'] == 200:
+        return r['main']['temp']
+    else:
+        return -1000
     
 ########################################## Filters ################################################
 
