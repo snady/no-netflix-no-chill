@@ -177,9 +177,10 @@ ul{
 	cursor:pointer; border:none; font-size:0; 
 	}/*---------------------right side navigation---------------**/
 #rightPan1{
-	width:191px;  margin:11px 0 15px 0; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:0;
+	width:720px;  margin:2px 0 15px 0; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:0;
 	height:200px;  position:absolute; left: 1600px top:139px;
 	}
+#rightPan1 table{width: 720px}
 #rightPan1 ul{
 	width:122px; display:block; margin:0px 0 28px 0; padding = 11px 0 0 32px; 
 	}
@@ -204,7 +205,7 @@ ul{
 	background:url(images/navi_arerow_h.gif) no-repeat 0 0 ; padding:0 0 0 10px;
 	}
 #rightPan1 h2{
-	font:normal 24px/22px Arial, Helvetica, sans-serif; color:#765914; display:block; width:170px; text-indent:0;
+	font:normal 24px/22px Arial, Helvetica, sans-serif; color:#765914; display:block; width:500px; text-indent:0;
 	height:52px; margin:0 0 22px 0; 
 	}
 #rightPan1 h2 span{

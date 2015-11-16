@@ -11,7 +11,7 @@
     <div id="member">
       <p></p>
       <form method="post">
-	<h2>It's {{temp}} degrees outside! How about some amazon prime and chill?</h2>
+	<h2>It's {{temp}} degrees outside! How about some amazon prime and chill? Click on movie to watch!</h2>
         </form>
       <p class="buttom"></p>
     </div>
@@ -26,18 +26,24 @@
       </form>
       <span></span> </div>
     <div id="rightPan1">
-      <h2>Amazon Prime Movies</h2>
-{% set n = 0 %}
-{% for movie in movies %}
-<a href="{{links[n]}}"><img src="{{movie['poster_240x342']}}" alt="oops"></a>
-<br>
-{% set n = n+1 %}
-{% endfor %}
+      <h2></h2>
 
       <a class="more" href="#"></a> </div>
   </div>
   <br class="blank" />
 </div>
+<br><br>.<br>
+<table>
+<tr><br></tr><tr>
+{%set counter = 0 %}
+{% for movie in movies %}
+<td><img src="{{movie['poster_240x342']}}" alt="oops"></td>
+{% set counter = counter + 1 %}
+{% if counter == 3 %}
+	</tr><tr>
+{% set counter = 0 %}
+{%endif%}
+{% endfor %}</tr></table>
 
 </body>
 </html>
