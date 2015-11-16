@@ -1,12 +1,12 @@
 from flask import Flask, render_template, session, request
 from flask import redirect, url_for
 import api
+import datetime
 
 app = Flask(__name__)
 
-######################## globals ##############################
 
-thresh = 15
+thresh = 12
 temp = -273 #temperature in celcius. If abs 0, then err
 zipc = ""
 genre = ""
@@ -34,7 +34,9 @@ def index():
                         return redirect("/nochill")
                 else:
                         return redirect("/chill")
-        return render_template("dummy.html")
+        d = datetime.datetime.now()
+        date = d.strftime('%m-%d-%Y')
+        return render_template("dummy.html",date=date)
         
 @app.route("/chill")
 def chill():
