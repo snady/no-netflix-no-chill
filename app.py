@@ -14,6 +14,11 @@ rating = ""
 
 @app.route("/", methods = ['GET','POST'])
 def index():
+        '''
+        Routes the home page
+
+        return template html dummy
+        '''
         if request.method == 'POST':
                 global zipc
                 zipc = request.form['zipcode']
@@ -31,6 +36,12 @@ def index():
         
 @app.route("/chill")
 def chill():
+        '''
+        Routes the chill page, which is displayed if temperature is lower than 15 celsius, also accounts for genre and rating
+        Shows the list of movies available in amazon prime
+
+        return template html chill
+        '''
         links = []
         movies = api.amazon()
         if genre != 'no':
@@ -43,6 +54,12 @@ def chill():
 
 @app.route("/nochill")
 def nochill():
+        '''
+        Routes the nochill page which is displayed if temperature is higher than 15 degrees
+        Shows the list of movies in nearby theaters
+
+        return template html nochill
+        '''
         print zipc
         movies = api.showtimes(zipc)
         if genre != 'no':
@@ -52,6 +69,13 @@ def nochill():
         return render_template("nochill.html", movies=movies, temp=temp)
 
 def filterGenre(json, genre):
+        '''
+        Filters the list of movies in json format by matching genre
+        
+        :param json, genre: list of movies in json format, genre name (Comedy, Horror, etc)
+
+        return list of movies with matching genre
+        '''
         newjson = []
         for r in json:
                 if 'id' not in r: #distinguishes between showtimes vs guidebox json formats
@@ -67,6 +91,13 @@ def filterGenre(json, genre):
         return newjson
 
 def filterRating(json, rate): #rate = "R", "PG-13", so on
+        '''
+        Filters the list of movies by rating
+
+        :param json, rate: list of movies in json format, rating name
+
+        return list of movies with matching rating
+        '''
         newjson = []
         for r in json:
                 if 'id' in r:
