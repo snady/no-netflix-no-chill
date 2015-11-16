@@ -45,9 +45,9 @@ def chill():
         links = []
         movies = api.amazon()
         if genre != 'no':
-                movies = filterGenre(movies, genre)
+                movies = api.filterGenre(movies, genre)
         if rating != 'no':
-                movies = filterRating(movies, rating)
+                movies = api.filterRating(movies, rating)
         for movie in movies:
                 links.append(api.amazonPurchase(movie['id']))
         return render_template("chill.html", movies=movies, temp=temp, links=links)
@@ -63,52 +63,10 @@ def nochill():
         print zipc
         movies = api.showtimes(zipc)
         if genre != 'no':
-                movies = filterGenre(movies, genre)
+                movies = api.filterGenre(movies, genre)
         if rating != 'no':
-                movies = filterRating(movies, rating)
+                movies = api.filterRating(movies, rating)
         return render_template("nochill.html", movies=movies, temp=temp)
-
-def filterGenre(json, genre):
-        '''
-        Filters the list of movies in json format by matching genre
-        
-        :param json, genre: list of movies in json format, genre name (Comedy, Horror, etc)
-
-        return list of movies with matching genre
-        '''
-        newjson = []
-        for r in json:
-                if 'id' not in r: #distinguishes between showtimes vs guidebox json formats
-                        if 'genres' in r:
-                                for t in r['genres']: #showtimes
-                                        if t == genre:
-                                                newjson.append(r)
-                else:
-                        print r['id']
-                        for t in api.amazonGenre(r['id']): #guidebox
-                                if t['title'] == genre:
-                                        newjson.append(r)
-        return newjson
-
-def filterRating(json, rate): #rate = "R", "PG-13", so on
-        '''
-        Filters the list of movies by rating
-
-        :param json, rate: list of movies in json format, rating name
-
-        return list of movies with matching rating
-        '''
-        newjson = []
-        for r in json:
-                if 'id' in r:
-                        if r['rating'] == rate: #guidebox
-                                newjson.append(r)
-                else:
-                        if 'ratings' in r:
-                                for t in r['ratings']: #showtimes
-                                        if t['code'] == rate:
-                                                newjson.append(r)
-        return newjson
 
 if __name__ == "__main__":
         app.secret_key = "hello"

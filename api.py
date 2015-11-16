@@ -1,7 +1,7 @@
 import urllib2, json
-import datetime
+import datetime, random
 
-################### Amazon Prime ##########################
+####################################### Amazon Prime ##############################################
 
 def amazon():
     '''
@@ -11,8 +11,10 @@ def amazon():
     return list of all movies in json format
     '''
     url = '''
-    https://api-public.guidebox.com/v1.43/US/rKAvVCDsUeEZaNcv4AIfOvmw9SBdODY2/movies/all/1/25/amazon_prime/all
+    https://api-public.guidebox.com/v1.43/US/rKAvVCDsUeEZaNcv4AIfOvmw9SBdODY2/movies/all/%s/15/amazon_prime/all
     '''
+    random.seed()
+    url = url%(random.randrange(60))
     request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
@@ -55,16 +57,17 @@ def amazonPurchase(id):
             return source['link']
     return "nop"
 
-################### Theatre Showtimes #####################
+####################################### Theatre Showtimes ##########################################
 
 def showtimes(zipcode):
     '''
     Does an api call of showtimes to get the list of movies in theaters nearby.
     Has 3 different api keys to account for 50 daily limit per key.
+    Adds a reformatted array of showtimes so that times are grouped by theatre.
 
     :param zipcode: zipcode for location
 
-    return list of all movies in json format
+    returns list of all movies in json format
     '''
     url = '''
     http://data.tmsapi.com/v1.1/movies/showings?startDate=%s&zip=%s&api_key=wzkewgxzuwv4fzh88f8cazfp
@@ -101,15 +104,13 @@ def showtimes(zipcode):
                 temp = t['theatre']['name']
                 theatres[-1]['name'] = temp
                 theatres[-1]['times'] = [t['dateTime'].split('T')[1]]
-            #print theatres
         i['theatres'] = theatres
         print i['theatres']
-            
     return r
 
 #showtimes(11229)
 
-################### OpenWeather #####################
+######################################## OpenWeather #############################################
 
 def weather(zipcode):
     '''
@@ -124,19 +125,46 @@ def weather(zipcode):
     r = json.loads(result)
     return r['main']['temp']
     
-################### Zippopotamus #####################
+########################################## Filters ################################################
 
-def zipcode(state,city):
-    '''
-    :param state, city: state name and city name (like NY, whitestone)
+def filterGenre(json, genre):
+        '''
+        Filters the list of movies in json format by matching genre
+        
+        :param json, genre: list of movies in json format, genre name (Comedy, Horror, etc)
 
-    return zipcode of a given state and city
-    '''
-    url = '''http://api.zippopotam.us/us/%s/%s'''
-    url = url%(state,city)
-    request = urllib2.urlopen(url)
-    result = request.read()
-    r = json.loads(result)
-    if r == {}:
-        return "error"
-    return r['places'] #[{'place name': 'whitestone', 'post code': '11357'}], could be more than 1 element
+        return list of movies with matching genre
+        '''
+        newjson = []
+        for r in json:
+                if 'id' not in r: #distinguishes between showtimes vs guidebox json formats
+                        if 'genres' in r:
+                                for t in r['genres']: #showtimes
+                                        if t == genre:
+                                                newjson.append(r)
+                else:
+                        print r['id']
+                        for t in api.amazonGenre(r['id']): #guidebox
+                                if t['title'] == genre:
+                                        newjson.append(r)
+        return newjson
+
+def filterRating(json, rate): #rate = "R", "PG-13", so on
+        '''
+        Filters the list of movies by rating
+
+        :param json, rate: list of movies in json format, rating name
+
+        return list of movies with matching rating
+        '''
+        newjson = []
+        for r in json:
+                if 'id' in r:
+                        if r['rating'] == rate: #guidebox
+                                newjson.append(r)
+                else:
+                        if 'ratings' in r:
+                                for t in r['ratings']: #showtimes
+                                        if t['code'] == rate:
+                                                newjson.append(r)
+        return newjson
