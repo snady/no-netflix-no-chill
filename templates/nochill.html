@@ -30,6 +30,7 @@
 <br><br>
 {% for movie in movies %}
 <h2>{{movie['title']}}</h2>
+<br>
 <p>Showtimes:</p>
 {% for theatre in movie['theatres'] %}
 <p><b>{{theatre['name']}}</b></p><p>
