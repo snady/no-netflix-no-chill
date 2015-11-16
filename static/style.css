@@ -35,7 +35,7 @@ ul{
 	margin:0;
 	}
 #member form h2{
-	background:url(images/member_icon.gif) no-repeat 0 4px; font:normal 18px/16px Arial, Helvetica, sans-serif; padding:50px 0 0 19px; width:150px; display:block; height:22px; margin:0; text-indent:0px;
+	background:url(images/member_icon.gif) no-repeat 0 4px; font:normal 18px/16px Arial, Helvetica, sans-serif; padding:50px 0 0 19px; width:150px; display:block; height:50px; margin:0; text-indent:0px;
 	}
 #member form label{
 	font-size:10px; line-height:14px; text-transform:uppercase; display:block; 
